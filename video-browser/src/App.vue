@@ -2,7 +2,7 @@
   <div class="container">
     <!-- alternative v-on: -->
     <SearchBar @termChange="onTermChange"></SearchBar>
-
+    <VideoDetail :video="selectedVideo"/>
     <!-- alternative v-bind: -->
     <VideoList :videos="videos" @videoSelect="onVideoSelect"></VideoList>
   </div>
@@ -14,6 +14,7 @@ import axios from 'axios'
 // components
 import SearchBar from './components/SearchBar.vue'
 import VideoList from "./components/VideoList.vue"
+import VideoDetail from "./components/VideoDetail.vue"
 
 // importing keys
 import YOUTUBE_API from '../secrets'
@@ -22,14 +23,15 @@ export default {
     name: 'App',
     components: {
       SearchBar,
-      VideoList
+      VideoList,
+      VideoDetail
     },
     data() {
-      return { videos: [] };
+      return { videos: [], selectedVideo: null };
     },
       methods: {
         onVideoSelect(video) {
-          console.log(video)
+          this.selectedVideo = video;
         },
         onTermChange(searchTerm) {
           axios.get('https://www.googleapis.com/youtube/v3/search', {
