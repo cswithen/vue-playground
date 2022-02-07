@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <ul class="list-group">
       <!-- "v-bind=video" + ":video" are the same -->
     <VideoListItem
       v-for="video in videos"
