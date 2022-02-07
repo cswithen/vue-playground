@@ -1,12 +1,33 @@
 <template>
-  <li class="list-group-item">
-    {{ video.snippet.title }}
+  <li class="list-group-item d-flex">
+    <div class="flex-shrink-0">
+
+    <img :src="thumbnailUrl" />
+      </div>
+    <div class="flex-grow-1 ms-3">
+      {{ video.snippet.title }}
+      </div>
   </li>
 </template>
 
 <script>
  export default {
    name: 'VideoListItem',
-   props: ['video']
+   props: ['video'],
+   computed: {
+     thumbnailUrl() {
+       return this.video.snippet.thumbnails.default.url;
+     }
+   }
  };
 </script>
+
+<style scoped>
+  li {
+    cursor: pointer;
+  }
+
+  li:hover {
+    background-color: #eee;
+  }
+</style>
