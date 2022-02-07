@@ -4,7 +4,7 @@
     <SearchBar @termChange="onTermChange"></SearchBar>
 
     <!-- alternative v-bind: -->
-    <VideoList :videos="videos"></VideoList>
+    <VideoList :videos="videos" @videoSelect="onVideoSelect"></VideoList>
   </div>
 </template>
 
@@ -28,6 +28,9 @@ export default {
       return { videos: [] };
     },
       methods: {
+        onVideoSelect(video) {
+          console.log(video)
+        },
         onTermChange(searchTerm) {
           axios.get('https://www.googleapis.com/youtube/v3/search', {
             params: {

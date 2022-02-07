@@ -5,6 +5,7 @@
       v-for="video in videos"
       v-bind:video="video"
       :key="video.etag"
+      @videoSelect="onVideoSelect"
     ></VideoListItem>
   </ul>
 </template>
@@ -20,6 +21,11 @@ import VideoListItem from './VideoListItem.vue'
    // for props can just provide an array of props but the recommended way is to provide an object with the keys as the property names and keys as data types
    props: {
      videos: Array
+   },
+   methods: {
+     onVideoSelect(video) {
+       this.$emit('videoSelect', video)
+     }
    }
  }
 </script>

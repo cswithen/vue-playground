@@ -1,5 +1,5 @@
 <template>
-  <li class="list-group-item d-flex">
+  <li class="list-group-item d-flex" @click="onVideoSelect">
     <div class="flex-shrink-0">
 
     <img :src="thumbnailUrl" />
@@ -17,6 +17,11 @@
    computed: {
      thumbnailUrl() {
        return this.video.snippet.thumbnails.default.url;
+     }
+   },
+   methods: {
+     onVideoSelect() {
+       this.$emit('videoSelect', this.video)
      }
    }
  };
