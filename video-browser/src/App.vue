@@ -1,20 +1,31 @@
 <template>
   <div>
+    <!-- alternative v-on: -->
     <SearchBar @termChange="onTermChange"></SearchBar>
+
+    <!-- alternative v-bind: -->
+    <VideoList :videos="videos"></VideoList>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
-import SearchBar from './components/SearchBar.vue'
 
+// components
+import SearchBar from './components/SearchBar.vue'
+import VideoList from "./components/VideoList.vue"
+
+// importing keys
 import YOUTUBE_API from '../secrets'
-console.log(YOUTUBE_API)
 
 export default {
     name: 'App',
     components: {
-      SearchBar: SearchBar
+      SearchBar,
+      VideoList
+    },
+    data() {
+      return { videos: [] };
     },
       methods: {
         onTermChange(searchTerm) {
@@ -25,7 +36,9 @@ export default {
               part: 'snippet',
               q: searchTerm
             }
-          }).then(response => console.log(response))
+          }).then(response => {
+            this.videos = response.data.items;
+          })
       }
       },
   }
