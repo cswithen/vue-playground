@@ -1,4 +1,4 @@
-# images
+# imgur-viewer
 
 ## Project setup
 ```
