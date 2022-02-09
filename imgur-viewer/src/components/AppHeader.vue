@@ -3,7 +3,8 @@
       <a href="/" class="item">
         Image Storage
       </a>
-    <div>
+    <div class="right menu">
+      <a href="#" class="ui item" @click="login">Login</a>
     </div>
   </div>
 </template>
@@ -13,7 +14,7 @@ import { mapActions } from 'vuex'
 
 export default {
   name: 'AppHeader',
-  // use '...mapActions([])' if you have additional methods you want to define
+  // use '...mapActions([])' if you have additional methods you want to define specific to the component
   methods: mapActions(['login'])
 }
 </script>
