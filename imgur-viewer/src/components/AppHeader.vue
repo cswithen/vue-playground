@@ -9,7 +9,11 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
-  name: 'AppHeader'
+  name: 'AppHeader',
+  // use '...mapActions([])' if you have additional methods you want to define
+  methods: mapActions(['login'])
 }
 </script>
