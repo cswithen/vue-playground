@@ -1,6 +1,6 @@
 <template>
   <div class="ui secondary pointing menu">
-    <router-link to="/" class="item"> Image Storage </router-link>
+    <router-link to="/" class="item active"> Image Storage </router-link>
     <div class="right menu">
       <div v-if="isLoggedIn" class="horizontal">
         <router-link to="/" class="item">Galleries</router-link>
